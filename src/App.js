@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Button, Grid, Statistic } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 
 const App = () => {
   const [seconds, setSeconds] = useState(0)
@@ -24,19 +26,26 @@ const App = () => {
   },[isActive, seconds])
 
   return(
-    <div>
-      <div>
-        Seconds: {seconds}
-      </div>
-      <div>
-        <button onClick={toggle}>
+    <Grid container centered columns={4}>
+      <Grid.Row centered columns={2}>
+        <Statistic>
+          <Statistic.Value>
+            {seconds}
+          </Statistic.Value>
+          <Statistic.Label>
+            Seconds
+          </Statistic.Label>
+        </Statistic>
+      </Grid.Row>
+      <Grid.Row centered columns={2}>
+        <Button primary onClick={toggle}>
           { isActive ? 'Pause' : 'Start' }
-        </button>
-        <button onClick={reset}>
+        </Button>
+        <Button secondary onClick={reset}>
           Reset
-        </button>
-      </div>
-    </div>
+        </Button>
+      </Grid.Row>
+    </Grid>
   )
 }
 
